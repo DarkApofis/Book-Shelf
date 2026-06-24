@@ -1,0 +1,73 @@
+/**
+ * Design tokens — single source of truth for the visual language.
+ *
+ * These mirror the structure of `guidance/brand-kit.md`, but the *values* here
+ * preserve the app's current "Folio" identity (sage-green accent + slate ink +
+ * Hanken/Schibsted/JetBrains type) so this refactor changes architecture, not
+ * appearance. To adopt the brand-kit palette later, only this file changes.
+ *
+ * Exposed to Tailwind v4 via `@theme`, which generates utilities such as
+ * `bg-paper`, `text-muted`, `border-line`, `rounded-lg`, `shadow-book`,
+ * `font-display`. Component code references these tokens, never raw hex.
+ */
+@theme {
+  /* Typography — wired to the next/font CSS variables set in layout.tsx */
+  --font-display: var(--font-schibsted), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-hanken), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains), "SF Mono", "Fira Code", monospace;
+
+  /* Surfaces */
+  --color-paper: #f4f6f4;
+  --color-surface: #ffffff;
+  --color-sidebar: #fbfcfb;
+
+  /* Text */
+  --color-ink: #1f2a2b;
+  --color-ink-soft: #3c4a48;
+  --color-muted: #5d6b69;
+  --color-faint: #8b9794;
+
+  /* Lines & dividers */
+  --color-line: #e4e8e5;
+  --color-line-soft: #eef1ee;
+  --color-line-strong: #d9ded9;
+
+  /* Accent (sage green) */
+  --color-accent: #4f7a6a;
+  --color-accent-soft: #eaf1ed;
+  --color-accent-line: #cfe1d7;
+
+  /* Status tones */
+  --color-reading: #45597e;
+  --color-reading-soft: #eaeef4;
+  --color-want: #9a6849;
+  --color-want-soft: #f4ece3;
+  --color-finished: #4f7a6a;
+  --color-finished-soft: #eaf1ed;
+
+  /* Rating gold */
+  --color-gold: #e0b577;
+
+  /* Night theme (Year in Review) */
+  --color-night-ink: #eef3ef;
+  --color-mint: #9fd1bb;
+  --color-mint-soft: #8fc0ac;
+
+  /* Radii */
+  --radius-sm: 0.3125rem;  /* 5px  */
+  --radius-md: 0.5625rem;  /* 9px  */
+  --radius-lg: 0.875rem;   /* 14px */
+  --radius-xl: 1.25rem;    /* 20px */
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgba(31, 42, 43, 0.04);
+  --shadow-book: 0 8px 18px rgba(31, 42, 43, 0.16);
+  --shadow-book-sm: 0 6px 14px rgba(31, 42, 43, 0.18);
+  --shadow-drawer: -10px 0 40px rgba(20, 28, 27, 0.18);
+  --shadow-toast: 0 10px 30px rgba(20, 28, 27, 0.3);
+
+  /* Layout */
+  --sidebar-width: 14.25rem;       /* 228px */
+  --library-max-width: 67.5rem;    /* 1080px */
+}

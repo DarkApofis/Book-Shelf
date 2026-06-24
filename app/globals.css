@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+* { box-sizing: border-box }
+body { margin: 0 }
+
+::-webkit-scrollbar { width: 10px; height: 10px }
+::-webkit-scrollbar-thumb { background: #d4dad6; border-radius: 8px; border: 3px solid transparent; background-clip: content-box }
+
+@keyframes flUp { from { opacity: 0; transform: translateY(18px) } to { opacity: 1; transform: none } }
+@keyframes flFade { from { opacity: 0 } to { opacity: 1 } }
+@keyframes flIn { from { transform: translateX(100%) } to { transform: none } }
+@keyframes flPop { 0% { transform: scale(.8); opacity: 0 } 60% { transform: scale(1.05) } 100% { transform: scale(1); opacity: 1 } }
+
+input[type=range] { accent-color: var(--color-accent); height: 4px }
+input, button { font-family: inherit }
+
+.fl-drawer { animation: flIn .28s ease }
+.fl-toast { animation: flUp .3s ease }
+
+@media (max-width: 880px) {
+  #fl-side {
+    position: fixed !important;
+    bottom: 0; left: 0; right: 0; top: auto !important;
+    width: 100% !important; height: auto !important;
+    flex-direction: row !important;
+    border-right: none !important;
+    border-top: 1px solid var(--color-line);
+    padding: 6px 8px !important;
+    z-index: 40;
+    justify-content: space-around;
+    gap: 4px !important;
+  }
+  #fl-side .fl-brand,
+  #fl-side .fl-navlabel,
+  #fl-side .fl-foot { display: none !important }
+  #fl-side .fl-nav { flex: 1; justify-content: center }
+  #fl-main { padding: 24px 18px 96px !important }
+  .fl-readcard { flex: 1 1 100% !important }
+  .fl-drawer { width: 100% !important }
+  .fl-authbrand { display: none !important }
+  .fl-authform { width: 100% !important }
+  .fl-authbrand-sm { display: flex !important }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fl-drawer, .fl-toast { animation: none }
+}
