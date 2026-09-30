@@ -24,7 +24,7 @@ describe('statusLabel', () => {
   it('maps each status to its label', () => {
     expect(statusLabel('reading')).toBe('Reading');
     expect(statusLabel('want')).toBe('Want to read');
-    expect(statusLabel('finished')).toBe('Finished');
+    expect(statusLabel('finished')).toBe('Read');
   });
 });
 

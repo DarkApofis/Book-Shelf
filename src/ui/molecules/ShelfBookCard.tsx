@@ -1,32 +1,28 @@
 'use client';
 
 import type { Book } from '../../domain/book/book.types';
-import { progressPct } from '../../domain/book/book.rules';
-import { formatRating, statusLabel } from '../../domain/shared/format';
 import { BookCover } from '../atoms/BookCover';
+import { RatingBadge } from '../atoms/RatingStars';
 
-/** Spine-style book tile for the shelf grid. */
+/** Cover-first tile for the shelf grid: cover, then title, author and rating. */
 export function ShelfBookCard({ book, onOpen }: { book: Book; onOpen: (id: string) => void }) {
-  const pct = progressPct(book.page, book.pages);
-
   return (
-    <button onClick={() => onOpen(book.id)} className="w-full cursor-pointer border-none bg-transparent p-0 text-left">
+    <button
+      type="button"
+      onClick={() => onOpen(book.id)}
+      className="group flex w-full min-w-0 cursor-pointer flex-col gap-2.5 border-none bg-transparent p-0 text-left text-ink"
+    >
       <BookCover
-        color={book.cover}
+        title={book.title}
+        author={book.author}
         imageUrl={book.coverUrl}
-        className="aspect-[2/3] justify-between rounded-[7px] px-[13px] py-[14px] shadow-book"
-        progressPct={book.status === 'reading' ? pct : undefined}
-      >
-        <div className="font-mono text-[9.5px] uppercase tracking-[0.06em] opacity-72">{book.genre}</div>
-        <div>
-          <div className="font-display text-[15px] font-bold leading-[1.14]">{book.title}</div>
-          <div className="mt-[5px] text-[11px] opacity-78">{book.author}</div>
-        </div>
-      </BookCover>
-      <div className="mt-[9px] flex items-center justify-between gap-1.5">
-        <span className="text-[11.5px] font-medium text-muted">{statusLabel(book.status)}</span>
-        <span className="font-mono text-[11.5px] text-faint">{formatRating(book.rating)}</span>
-      </div>
+        className="w-full transition-[transform,box-shadow] duration-200 group-hover:-translate-y-[3px] group-hover:shadow-[0_0_0_1px_rgba(24,33,34,0.08),0_12px_24px_rgba(24,33,34,0.16)] motion-reduce:transition-none motion-reduce:group-hover:translate-y-0"
+      />
+      <span className="block min-w-0">
+        <span className="line-clamp-2 text-[13.5px] font-semibold leading-[1.35]">{book.title}</span>
+        <span className="mt-px block truncate text-[12.5px] text-muted">{book.author}</span>
+        {book.rating > 0 && <span className="mt-1 block"><RatingBadge rating={book.rating} /></span>}
+      </span>
     </button>
   );
 }

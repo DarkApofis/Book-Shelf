@@ -5,8 +5,8 @@ import { cn } from '../lib/cn';
 type ButtonVariant = 'primary' | 'secondary' | 'mint' | 'nightGhost';
 
 const VARIANT_CLASS: Record<ButtonVariant, string> = {
-  primary: 'border-none bg-accent text-white',
-  secondary: 'border border-line-strong bg-surface text-ink-soft',
+  primary: 'border-none bg-ink text-white hover:bg-ink-soft',
+  secondary: 'border border-line bg-surface text-ink hover:bg-sidebar',
   mint: 'border-none bg-mint text-[#16201f]',
   nightGhost: 'border border-white/20 bg-transparent text-night-ink',
 };
@@ -20,7 +20,7 @@ export function Button({ variant = 'primary', className, type = 'button', ...res
   return (
     <button
       type={type}
-      className={cn('cursor-pointer rounded-md font-semibold', VARIANT_CLASS[variant], className)}
+      className={cn('cursor-pointer rounded-lg font-semibold transition-colors', VARIANT_CLASS[variant], className)}
       {...rest}
     />
   );

@@ -9,7 +9,7 @@ export function Toast() {
 
   return (
     <div
-      className="fl-toast fixed bottom-[26px] left-1/2 z-[60] -translate-x-1/2 whitespace-nowrap rounded-[30px] bg-ink px-5 py-3 text-[13.5px] font-medium text-paper shadow-toast"
+      className="fl-toast fixed bottom-[88px] left-1/2 z-[60] -translate-x-1/2 whitespace-nowrap rounded-lg bg-ink px-4 py-2.5 text-[13.5px] font-medium text-white shadow-toast nav:bottom-[26px]"
       role="status"
       aria-live="polite"
     >

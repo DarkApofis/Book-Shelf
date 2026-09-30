@@ -41,6 +41,7 @@ function toCatalogBook(r: SearchResultDTO): CatalogBook {
     pages: r.pages ?? 0,
     cover: pickColor(r.sourceId),
     coverUrl: r.coverUrl,
+    year: r.firstPublishYear,
   };
 }
 
