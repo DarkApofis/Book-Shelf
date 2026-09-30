@@ -7,7 +7,7 @@ export function YirGate() {
   const goToAuth = useAuthStore((s) => s.goToAuth);
 
   return (
-    <div className="-mx-[44px] -my-[38px] flex min-h-screen items-center justify-center bg-[radial-gradient(120%_90%_at_80%_-10%,#22332f_0%,#16201f_55%,#101918_100%)] px-[44px] py-[46px] text-night-ink">
+    <div className="flex min-h-screen items-center justify-center bg-[radial-gradient(120%_90%_at_80%_-10%,#22332f_0%,#16201f_55%,#101918_100%)] px-5 py-[46px] nav:px-[44px] text-night-ink">
       <div className="max-w-[520px] animate-[flUp_.4s_ease] text-center">
         <div className="font-mono text-[12.5px] tracking-[0.14em] text-mint-soft">2025 · WRAPPED</div>
         <h1 className="mt-[14px] font-display text-[clamp(34px,5vw,52px)] font-black leading-[1.02] tracking-[-0.02em]">

@@ -31,7 +31,7 @@ function NightToggle({ active, onClick, children }: { active: boolean; onClick: 
 
 function NightCard({ label, right, children }: { label: string; right?: React.ReactNode; children: React.ReactNode }) {
   return (
-    <div className="mt-[22px] rounded-2xl border border-white/8 bg-white/5 px-8 py-[30px]">
+    <div className="mt-[22px] rounded-2xl border border-white/8 bg-white/5 px-5 py-6 sm:px-8 sm:py-[30px]">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <div className="font-mono text-[11.5px] uppercase tracking-[0.1em] text-mint-soft">{label}</div>
         {right}
@@ -62,7 +62,7 @@ export function YearInReview() {
   // Member with nothing finished yet — the review fills in as they read.
   if (isMember && !liveYir) {
     return (
-      <div className="-mx-[44px] -my-[38px] flex min-h-screen flex-col items-center justify-center bg-[radial-gradient(120%_90%_at_80%_-10%,#22332f_0%,#16201f_55%,#101918_100%)] px-[44px] text-center font-sans text-night-ink">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-[radial-gradient(120%_90%_at_80%_-10%,#22332f_0%,#16201f_55%,#101918_100%)] px-5 text-center nav:px-[44px] font-sans text-night-ink">
         <div className="font-mono text-[12.5px] tracking-[0.14em] text-mint-soft">{APP_TODAY.getFullYear()} · YOUR YEAR SO FAR</div>
         <h1 className="mt-[14px] max-w-[520px] font-display text-[clamp(30px,5vw,48px)] font-black leading-[1.05] tracking-[-0.03em]">
           Your Year in Review is still being written.
@@ -79,7 +79,7 @@ export function YearInReview() {
   const yir = liveYir ?? buildYir(YIR_DATA, scenario, year, { elapsedMonths });
 
   return (
-    <div className="-mx-[44px] -my-[38px] min-h-screen bg-[radial-gradient(120%_90%_at_80%_-10%,#22332f_0%,#16201f_55%,#101918_100%)] px-[44px] pb-20 pt-[46px] font-sans text-night-ink">
+    <div className="min-h-screen bg-[radial-gradient(120%_90%_at_80%_-10%,#22332f_0%,#16201f_55%,#101918_100%)] px-5 pb-20 pt-[46px] nav:px-[44px] font-sans text-night-ink">
       <div className="mx-auto max-w-[720px]">
         {/* Switchers — demo personas/years, shown for guests only. A signed-in
             reader's review is their real library, so there's nothing to switch. */}
@@ -144,7 +144,7 @@ export function YearInReview() {
         </NightCard>
 
         {/* Ratings + favorite */}
-        <div className="mt-[22px] grid grid-cols-2 gap-[22px]">
+        <div className="mt-[22px] grid grid-cols-1 gap-[22px] sm:grid-cols-2">
           <div className="rounded-2xl border border-white/8 bg-white/5 p-7">
             <div className="font-mono text-[11.5px] uppercase tracking-[0.1em] text-mint-soft">Avg rating</div>
             <div className="my-1 mb-[14px] font-display text-[46px] font-extrabold">★ {yir.avgRating}</div>

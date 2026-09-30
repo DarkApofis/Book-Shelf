@@ -49,6 +49,17 @@ export function finishReading(book: Book): Partial<Book> {
   };
 }
 
+/** Move a book back to "want to read", clearing progress. */
+export function shelveForLater(): Partial<Book> {
+  return { status: 'want', page: 0 };
+}
+
+/** Set a 0–5 star rating (0 = unrated), clamped and snapped to half stars. */
+export function setRating(rating: number): Partial<Book> {
+  if (Number.isNaN(rating)) return { rating: 0 };
+  return { rating: Math.round(Math.min(5, Math.max(0, rating)) * 2) / 2 };
+}
+
 /** Promote a catalog entry into a shelf book in the "want to read" state. */
 export function fromCatalog(catalogBook: CatalogBook): Book {
   return {

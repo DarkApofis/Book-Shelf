@@ -2,8 +2,8 @@
  * Design tokens — single source of truth for the visual language.
  *
  * These mirror the structure of `guidance/brand-kit.md`, but the *values* here
- * preserve the app's current "Folio" identity (sage-green accent + slate ink +
- * Hanken/Schibsted/JetBrains type) so this refactor changes architecture, not
+ * preserve the app's "Folio" identity (deep sage accent used sparingly, slate
+ * ink on white, hairline dividers, Hanken/Schibsted type) so this refactor changes architecture, not
  * appearance. To adopt the brand-kit palette later, only this file changes.
  *
  * Exposed to Tailwind v4 via `@theme`, which generates utilities such as
@@ -17,36 +17,43 @@
   --font-mono: var(--font-jetbrains), "SF Mono", "Fira Code", monospace;
 
   /* Surfaces */
-  --color-paper: #f4f6f4;
+  --color-paper: #ffffff;
   --color-surface: #ffffff;
-  --color-sidebar: #fbfcfb;
+  --color-sidebar: #f7f8f7;
 
   /* Text */
-  --color-ink: #1f2a2b;
-  --color-ink-soft: #3c4a48;
-  --color-muted: #5d6b69;
-  --color-faint: #8b9794;
+  --color-ink: #182122;
+  --color-ink-soft: #3a4745;
+  --color-muted: #56625f;
+  --color-faint: #6b7673;
 
   /* Lines & dividers */
-  --color-line: #e4e8e5;
-  --color-line-soft: #eef1ee;
-  --color-line-strong: #d9ded9;
+  --color-line: #e6e9e6;
+  --color-line-soft: #eef0ee;
+  --color-line-strong: #d5dad6;
 
   /* Accent (sage green) */
-  --color-accent: #4f7a6a;
-  --color-accent-soft: #eaf1ed;
+  --color-accent: #3f6a5b;
+  --color-accent-soft: #edf3f0;
   --color-accent-line: #cfe1d7;
 
   /* Status tones */
-  --color-reading: #45597e;
+  --color-reading: #3d5a80;
   --color-reading-soft: #eaeef4;
   --color-want: #9a6849;
   --color-want-soft: #f4ece3;
-  --color-finished: #4f7a6a;
+  --color-finished: #3f6a5b;
   --color-finished-soft: #eaf1ed;
 
+  /* Deeper accent for text links and hover (AA on white at small sizes) */
+  --color-accent-ink: #2f5447;
+
+  /* Behind-pace warning */
+  --color-warn: #7a4a1c;
+  --color-warn-dot: #b7792f;
+
   /* Rating gold */
-  --color-gold: #e0b577;
+  --color-gold: #c9962f;
 
   /* Night theme (Year in Review) */
   --color-night-ink: #eef3ef;
@@ -61,13 +68,18 @@
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-card: 0 1px 2px rgba(31, 42, 43, 0.04);
+  --shadow-card: 0 1px 2px rgba(24, 33, 34, 0.04);
+  --shadow-cover: 0 0 0 1px rgba(24, 33, 34, 0.08), 0 4px 12px rgba(24, 33, 34, 0.1);
+  --shadow-cover-lg: 0 0 0 1px rgba(24, 33, 34, 0.08), 0 16px 40px rgba(24, 33, 34, 0.18);
   --shadow-book: 0 8px 18px rgba(31, 42, 43, 0.16);
   --shadow-book-sm: 0 6px 14px rgba(31, 42, 43, 0.18);
   --shadow-drawer: -10px 0 40px rgba(20, 28, 27, 0.18);
   --shadow-toast: 0 10px 30px rgba(20, 28, 27, 0.3);
 
   /* Layout */
-  --sidebar-width: 14.25rem;       /* 228px */
-  --library-max-width: 67.5rem;    /* 1080px */
+  --sidebar-width: 15.5rem;        /* 248px */
+  --library-max-width: 70rem;      /* 1120px */
+
+  /* Breakpoint where the phone chrome (top bar + tab bar) gives way to the sidebar */
+  --breakpoint-nav: 56.25rem;      /* 900px */
 }

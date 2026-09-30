@@ -41,4 +41,6 @@ export interface CatalogBook {
   cover: string;
   coverUrl?: string | null;
   sourceId?: string | null;
+  /** First publication year from the source API, when known. */
+  year?: number | null;
 }

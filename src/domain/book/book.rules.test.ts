@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   bumpPage, clampPage, countByStatus, finishReading, fromCatalog,
-  onShelf, pagesLeft, progressPct, setPage, startReading, DEFAULT_FINISH_RATING,
+  onShelf, pagesLeft, progressPct, setPage, setRating, shelveForLater, startReading, DEFAULT_FINISH_RATING,
 } from './book.rules';
 import type { Book, CatalogBook } from './book.types';
 
@@ -62,6 +62,22 @@ describe('status transitions', () => {
 
   it('finishReading applies a default rating when unrated', () => {
     expect(finishReading(reading).rating).toBe(DEFAULT_FINISH_RATING);
+  });
+});
+
+describe('shelveForLater', () => {
+  it('returns a book to want-to-read with progress cleared', () => {
+    expect(shelveForLater()).toEqual({ status: 'want', page: 0 });
+  });
+});
+
+describe('setRating', () => {
+  it('snaps to half stars and clamps to 0..5', () => {
+    expect(setRating(4)).toEqual({ rating: 4 });
+    expect(setRating(3.7)).toEqual({ rating: 3.5 });
+    expect(setRating(9)).toEqual({ rating: 5 });
+    expect(setRating(-2)).toEqual({ rating: 0 });
+    expect(setRating(Number.NaN)).toEqual({ rating: 0 });
   });
 });
 

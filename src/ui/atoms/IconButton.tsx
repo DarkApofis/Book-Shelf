@@ -8,7 +8,7 @@ interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
   variant?: 'filled' | 'plain';
 }
 
-/** Compact icon-only button (close, dismiss). */
+/** Icon-only button (close, dismiss, edit) with a 44px touch target. */
 export function IconButton({ label, variant = 'filled', className, type = 'button', children, ...rest }: IconButtonProps) {
   return (
     <button
@@ -17,8 +17,8 @@ export function IconButton({ label, variant = 'filled', className, type = 'butto
       className={cn(
         'cursor-pointer leading-none',
         variant === 'filled'
-          ? 'grid h-8 w-8 place-items-center rounded-full border-none bg-line-soft text-[17px] text-muted'
-          : 'border-none bg-transparent text-[18px] text-faint',
+          ? 'grid h-11 w-11 place-items-center rounded-lg border border-line bg-surface text-ink-soft hover:bg-sidebar'
+          : 'grid h-11 w-11 place-items-center rounded-lg border-none bg-transparent text-muted hover:text-ink',
         className,
       )}
       {...rest}

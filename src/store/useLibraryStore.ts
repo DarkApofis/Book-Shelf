@@ -16,6 +16,8 @@ import {
   finishReading,
   fromCatalog,
   setPage as setPageRule,
+  setRating as setRatingRule,
+  shelveForLater,
   startReading,
 } from '../domain/book/book.rules';
 import { toDateLabel } from '../domain/shared/format';
@@ -40,6 +42,9 @@ interface LibraryState {
   bumpPage: (id: string, delta: number) => void;
   startBook: (id: string) => void;
   finishBook: (id: string) => void;
+  rateBook: (id: string, rating: number) => void;
+  /** Move a book back to "want to read" (progress cleared). */
+  shelveBook: (id: string) => void;
   /**
    * Add a catalog/search book to the "want to read" shelf. Returns true if newly
    * added (false if its id is already on a shelf this session).
@@ -129,6 +134,18 @@ export const useLibraryStore = create<LibraryState>((set, get) => {
 
     finishBook: (id) => {
       const delta = patch(id, (b) => finishReading(b));
+      const { userId } = get();
+      if (delta && userId) booksRepo.updateBook(id, delta).catch(reconcile);
+    },
+
+    rateBook: (id, rating) => {
+      const delta = patch(id, () => setRatingRule(rating));
+      const { userId } = get();
+      if (delta && userId) booksRepo.updateBook(id, delta).catch(reconcile);
+    },
+
+    shelveBook: (id) => {
+      const delta = patch(id, () => shelveForLater());
       const { userId } = get();
       if (delta && userId) booksRepo.updateBook(id, delta).catch(reconcile);
     },

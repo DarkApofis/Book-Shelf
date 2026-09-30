@@ -28,7 +28,7 @@ export function statusLabel(status: BookStatus): string {
   switch (status) {
     case 'reading': return 'Reading';
     case 'want': return 'Want to read';
-    case 'finished': return 'Finished';
+    case 'finished': return 'Read';
   }
 }
 

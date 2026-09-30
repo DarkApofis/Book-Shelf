@@ -13,6 +13,7 @@ export function useBookshelf() {
   const finishBook = useLibraryStore((s) => s.finishBook);
   const startBook = useLibraryStore((s) => s.startBook);
   const addBook = useLibraryStore((s) => s.addBook);
+  const shelveBook = useLibraryStore((s) => s.shelveBook);
   const markFinished = useUiStore((s) => s.markFinished);
   const showToast = useUiStore((s) => s.showToast);
 
@@ -25,6 +26,10 @@ export function useBookshelf() {
     start: (id: string) => {
       startBook(id);
       showToast('Started reading — happy turning');
+    },
+    shelve: (id: string) => {
+      shelveBook(id);
+      showToast('Moved to "Want to read"');
     },
     add: (book: CatalogBook) => {
       if (addBook(book)) showToast('Added to "Want to read"');
